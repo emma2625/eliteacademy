@@ -1,0 +1,20 @@
+.index-hero img {
+    height: 40rem;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.index-hero .carousel-caption {
+    top: 40%;
+}
+
+.index-hero .carousel-caption h3 {
+    font-size: 4rem;
+}
+
+
+@media screen and (max-width: 576px) {
+    .index-hero img {
+        height: 26rem;
+    }
+}
