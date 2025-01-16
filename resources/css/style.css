@@ -1,0 +1,41 @@
+.index-hero img {
+    height: 40rem;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.index-hero .carousel-caption {
+    top: 40%;
+}
+
+.index-hero .carousel-caption h3 {
+    font-size: 4rem;
+}
+
+
+@media screen and (max-width: 576px) {
+    .index-hero img {
+        height: 26rem;
+    }
+}
+
+.team .box {
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.team img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    object-fit: cover;
+    object-position: top;
+    transition: 200ms;
+}
+
+.team img:hover {
+    scale: 1.1;
+}
