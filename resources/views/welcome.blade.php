@@ -11,14 +11,14 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="assets/images/img-4.jpg" class="w-100 d-block" alt="First slide" />
+                    <img src="{{ asset('images/img-4.jpg') }}" class="w-100 d-block" alt="First slide" />
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Welcome to Elite Academy</h3>
                         <p>Where educational excelence is what we strive for.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/img-5.jpg" class="w-100 d-block" alt="Second slide" />
+                    <img src="{{ asset('images/img-5.jpg') }}" class="w-100 d-block" alt="Second slide" />
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Education at its peak</h3>
                         <p>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/img-1.jpg" class="w-100 d-block" alt="Third slide" />
+                    <img src="{{ asset('images/img-1.jpg') }}" class="w-100 d-block" alt="Third slide" />
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Join us Today</h3>
                         <p>Give your child or ward the best in mordern education</p>
@@ -54,7 +54,7 @@
 
             <div class="row">
                 <div class="col-md-6 mb-4">
-                    <img src="assets/images/img-2.jpg" class="w-100" alt="">
+                    <img src="{{ asset('images/img-2.jpg') }}" class="w-100" alt="">
                 </div>
                 <div class="col-md-6 mb-4 pt-md-5">
                     <p class="h2">Enroll your child/ward today</p>

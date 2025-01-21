@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [PageController::class, 'homePage'])->name('home.page');
 Route::get('/about', [PageController::class, 'aboutPage'])->name('about.page');
+Route::get('/contact', [PageController::class, 'contactPage'])->name('contact.page');
 
 Auth::routes();
 
