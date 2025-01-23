@@ -12,7 +12,7 @@ class ClassController extends Controller
     public function create()
     {
         $grades = Grade::all();
-     
+
         return view('admin.classes.index', compact('grades'));
     }
 
@@ -42,5 +42,37 @@ class ClassController extends Controller
         $grade = Grade::findOrFail($id);
 
         return view('admin.classes.edit', compact('grade'));
+    }
+
+
+    public function  update(Request $request, $id) 
+    {
+        $grade = Grade::findOrFail($id);
+
+        $request->validate([
+            'class_name' => "required|string|max:255|unique:grades,name,{$id}",
+            'class_abbreviation' => ['required', 'string', 'max:10', 'unique:grades,abrv,' . $id]
+        ]);
+
+        Grade::where('id', '=', $id)->update([
+            'name' => $request->input('class_name'),
+            'abrv' => $request->input('class_abbreviation')
+        ]);
+
+        Alert::success('Updated Successfully', 'Your class has been updated');
+
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        $grade = Grade::findOrFail($id);
+
+        $grade->delete();
+
+        Alert::success('Deleted Successfully', 'Your class has been deleted');
+
+        return back();
+
     }
 }

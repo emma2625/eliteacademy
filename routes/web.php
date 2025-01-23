@@ -19,4 +19,6 @@ Route::get('/admin/classes/{id}/edit', [ClassController::class, 'edit'])->name('
 
 Route::patch('/admin/classes/{id}/update', [ClassController::class, 'update'])->name('admin.class.update');
 
+Route::delete('/admin/classes/{id}/delete', [ClassController::class, 'destroy'])->name('admin.class.destroy');
+
 Route::post('/admin/classes', [ClassController::class, 'store'])->name('admin.class.store');
