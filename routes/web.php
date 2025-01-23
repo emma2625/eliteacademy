@@ -14,4 +14,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/classes', [ClassController::class, 'create'])->name('admin.class.create');
+
+Route::get('/admin/classes/{id}/edit', [ClassController::class, 'edit'])->name('admin.class.edit');
+
+Route::patch('/admin/classes/{id}/update', [ClassController::class, 'update'])->name('admin.class.update');
+
 Route::post('/admin/classes', [ClassController::class, 'store'])->name('admin.class.store');

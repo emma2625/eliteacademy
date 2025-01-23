@@ -83,12 +83,14 @@
 
                                 @forelse ($grades as $grade)
                                     <tr class="">
-                                        <td scope="row">R1C1</td>
-                                        <td>R1C2</td>
-                                        <td>R1C3</td>
-                                        <td>R1C3</td>
+                                        <td scope="row"> {{ $grade->name }} </td>
+                                        <td>{{ $grade->abrv }}</td>
+
+                                        <td> {{ $grade->created_at->format('M jS. Y h:i a') }} </td>
+
+                                        <td> {{ $grade->updated_at->diffForHumans() }} </td>
                                         <td class="d-flex align-items-center gap-2">
-                                            <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{{ route('admin.class.edit', $grade->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                             <form action=""><button class="btn btn-danger btn-sm">Delete</button>
                                             </form>
                                         </td>

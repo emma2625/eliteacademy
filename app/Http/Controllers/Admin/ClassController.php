@@ -34,4 +34,13 @@ class ClassController extends Controller
         // return redirect()->route('admin.class.create');
         return back();
     }
+
+
+    public function edit($id)
+    {
+        // $grade = Grade::find($id);
+        $grade = Grade::findOrFail($id);
+
+        return view('admin.classes.edit', compact('grade'));
+    }
 }
