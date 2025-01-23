@@ -11,7 +11,9 @@ class ClassController extends Controller
 {
     public function create()
     {
-        return view('admin.classes.index');
+        $grades = Grade::all();
+     
+        return view('admin.classes.index', compact('grades'));
     }
 
     public function store(Request $request)

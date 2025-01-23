@@ -80,16 +80,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="">
-                                    <td scope="row">R1C1</td>
-                                    <td>R1C2</td>
-                                    <td>R1C3</td> 
-                                    <td>R1C3</td> 
-                                    <td class="d-flex align-items-center gap-2">
-                                        <a href="" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action=""><button class="btn btn-danger btn-sm">Delete</button></form>    
-                                    </td> 
-                                </tr>
+
+                                @forelse ($grades as $grade)
+                                    <tr class="">
+                                        <td scope="row">R1C1</td>
+                                        <td>R1C2</td>
+                                        <td>R1C3</td>
+                                        <td>R1C3</td>
+                                        <td class="d-flex align-items-center gap-2">
+                                            <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                            <form action=""><button class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center"> No Class Added Yet </td>
+                                    </tr>
+                                @endforelse
+
                             </tbody>
                         </table>
                     </div>
