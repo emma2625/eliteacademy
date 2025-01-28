@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,3 +23,6 @@ Route::patch('/admin/classes/{id}/update', [ClassController::class, 'update'])->
 Route::delete('/admin/classes/{id}/delete', [ClassController::class, 'destroy'])->name('admin.class.destroy');
 
 Route::post('/admin/classes', [ClassController::class, 'store'])->name('admin.class.store');
+
+
+Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.page');

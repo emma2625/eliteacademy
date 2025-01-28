@@ -37,12 +37,37 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact.page') }}">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
-                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle"
+                                        type="button"
+                                        id="triggerId"
+                                        data-bs-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                                        <a class="dropdown-item" href="{{ route('profile.page') }}">Profile</a>
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="dropdown-item">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                            </li>
+                        @endguest
                     </ul>
                     <form class="d-flex my-2 my-lg-0">
                         <input class="form-control me-sm-2" type="text" placeholder="Search" />
