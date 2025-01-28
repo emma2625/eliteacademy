@@ -1,6 +1,6 @@
 users - id, name, email, password, role[admin, student], avatar
 
-student_infos - id, user_id, phone_number, address, emergency_contact_name, emergency_contact_phone
+user_infos - id, user_id, phone_number, address, emergency_contact_name, emergency_contact_phone
 
 classes - id, name, abv **
 
@@ -13,3 +13,8 @@ fees - id, user_id, class_id, year, term, amount, status[failed,part,paid]
 
 1  | 56  | 2 | 2021 | graduated
 1  | 56  | 3 | 2022 | graduated
+
+
+
+. hasOne ----- 1 = 1 
+. hasMany ----- 1 = multiple

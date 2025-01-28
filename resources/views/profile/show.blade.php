@@ -8,8 +8,8 @@
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="150px"
                         src="{{ asset('profile.jpg') }}">
-                    <span class="font-weight-bold">Edogaru</span>
-                    <span class="text-black-50">edogaru@mail.com.my</span>
+                    <span class="font-weight-bold"> {{ Auth::user()->name }} </span>
+                    <span class="text-black-50"> {{ Auth::user()->email }} </span>
                     <span> </span>
 
                     <input type="file" class="form-control form-control-sm" accept="image/*">
@@ -23,7 +23,7 @@
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <label class="labels">Name</label>
-                            <input type="text" class="form-control"  value="">
+                            <input type="text" class="form-control"  value="{{ Auth::user()->name }}">
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Phone Number</label>
