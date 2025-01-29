@@ -25,4 +25,6 @@ Route::delete('/admin/classes/{id}/delete', [ClassController::class, 'destroy'])
 Route::post('/admin/classes', [ClassController::class, 'store'])->name('admin.class.store');
 
 
-Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.page');
+Route::middleware(['auth'])->get('/profile', [ProfileController::class, 'showProfile'])->name('profile.page');
+
+Route::middleware(['auth'])->patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

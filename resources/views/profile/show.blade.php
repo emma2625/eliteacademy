@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container rounded bg-white my-5">
-        <form method="POST" class="row">
-            @csrf
+        <form method="POST" action="{{ route('profile.update') }}" class="row" enctype="multipart/form-data">
+            @csrf @method('PATCH')
             <div class="col-md-4 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="150px" src="{{ asset('profile.jpg') }}">

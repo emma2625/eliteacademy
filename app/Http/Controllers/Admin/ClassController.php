@@ -9,6 +9,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ClassController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'is.admin']);
+    }
+
     public function create()
     {
         $grades = Grade::all();
