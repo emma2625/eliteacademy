@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             // $table->foreignId('user_id')->nullable()->constrained('users', 'id')->nullOnDelete();
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
-            $table->string('phone_number');
-            $table->mediumText('address');
-            $table->string('em_name');
-            $table->string('em_phone');
+            $table->string('phone_number')->nullable();
+            $table->mediumText('address')->nullable();
+            $table->string('em_name')->nullable();
+            $table->string('em_phone')->nullable();
             $table->timestamps();
         });
     }
