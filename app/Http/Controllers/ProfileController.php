@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -30,7 +35,39 @@ class ProfileController extends Controller
             'n_phone.max' => "Your emergency contact phone number should not be more than 20 characters",
         ]);
 
+        $userAvatar = Auth::user()->avatar;
         
+        if ($request->hasFile('picture')) {
+            // The code to upload
+            $file = $request->file('picture');
+            $fileName = $file->hashName();
+            $file->move('uploads/profile', $fileName);
 
+            $path = "uploads/profile/" . $fileName;
+
+            if (File::exists(public_path($userAvatar))) {
+               File::delete(public_path($userAvatar));
+            }
+
+            User::where('id', Auth::id())->update([
+                'name' => $request->input('full_name'),
+                'avatar' => $path
+            ]);
+        }else {
+            User::where('id', Auth::id())->update([
+                'name' => $request->input('full_name'),
+            ]);
+        }
+
+        UserInfo::where('user_id', Auth::id())->update([
+            'phone_number' => $request->input('phone_number'),
+            'address' => $request->input('address'),
+            'em_name' => $request->input('n_name'),
+            'em_phone' => $request->input('n_phone')
+        ]);
+
+        Alert::success('Updated Successfuly');
+        return back();
+       
     }
 }

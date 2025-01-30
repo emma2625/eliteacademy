@@ -6,7 +6,12 @@
             @csrf @method('PATCH')
             <div class="col-md-4 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" width="150px" src="{{ asset('profile.jpg') }}">
+                    @if (Auth::user()->avatar)
+                        <img class="rounded-circle mt-5" width="150px" height="150px" src="{{ asset(Auth::user()->avatar) }}">
+                    @else
+                        <img class="rounded-circle mt-5" width="150px" src="{{ asset('profile.jpg') }}">
+                    @endif
+
                     <span class="font-weight-bold"> {{ Auth::user()->name }} </span>
                     <span class="text-black-50"> {{ Auth::user()->email }} </span>
                     <span> </span>
@@ -32,14 +37,14 @@
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Phone Number</label>
-                            <input type="tel" name="phone_number" class="form-control" value="">
+                            <input type="tel" name="phone_number" value="{{ Auth::user()->info->phone_number }}" class="form-control">
                             @error('phone_number')
                                 <small class="text-danger font-bold">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Address</label>
-                            <textarea class="form-control" name="address"></textarea>
+                            <textarea class="form-control" name="address">{{ Auth::user()->info->address }}</textarea>
                             @error('address')
                                 <small class="text-danger font-bold">{{ $message }}</small>
                             @enderror
@@ -48,14 +53,14 @@
                         <h3 class="col-12 my-5">Emergency Contact</h3>
                         <div class="col-md-6">
                             <label class="labels">Name</label>
-                            <input type="text" name="n_name" class="form-control" value="">
+                            <input type="text" name="n_name" value="{{ Auth::user()->info->em_name }}" class="form-control">
                             @error('n_name')
                                 <small class="text-danger font-bold">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Phone Number</label>
-                            <input type="tel" name="n_phone" class="form-control" value="">
+                            <input type="tel" name="n_phone" class="form-control" value="{{ Auth::user()->em_phone }}">
                             @error('n_phone')
                                 <small class="text-danger font-bold">{{ $message }}</small>
                             @enderror
