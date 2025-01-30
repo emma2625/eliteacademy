@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="labels">Phone Number</label>
-                            <input type="tel" name="n_phone" class="form-control" value="{{ Auth::user()->em_phone }}">
+                            <input type="tel" name="n_phone" class="form-control" value="{{ Auth::user()->info->em_phone }}">
                             @error('n_phone')
                                 <small class="text-danger font-bold">{{ $message }}</small>
                             @enderror

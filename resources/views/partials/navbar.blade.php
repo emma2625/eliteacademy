@@ -47,25 +47,23 @@
                         @else
                             <li class="nav-item">
                                 <div class="dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        type="button"
-                                        id="triggerId"
-                                        data-bs-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >
+                                    <a class="nav-link dropdown-toggle" type="button" id="triggerId"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ Auth::user()->name }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="triggerId">
                                         <a class="dropdown-item" href="{{ route('profile.page') }}">Profile</a>
+                                        @if (Auth::user()->role == 'admin')
+                                            <a class="dropdown-item" href="{{ route('admin.class.create') }}">Classes</a>
+                                            <a class="dropdown-item" href="{{ route('admin.users.index') }}">Students</a>
+                                        @endif
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button class="dropdown-item">Logout</button>
                                         </form>
                                     </div>
                                 </div>
-                                
+
                             </li>
                         @endguest
                     </ul>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ClassController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,7 @@ Route::post('/admin/classes', [ClassController::class, 'store'])->name('admin.cl
 Route::middleware(['auth'])->get('/profile', [ProfileController::class, 'showProfile'])->name('profile.page');
 
 Route::middleware(['auth'])->patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+
+// Admin User Routes
+Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
