@@ -74,6 +74,7 @@
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Abrv</th>
+                                    <th scope="col">Total Students</th>
                                     <th scope="col">Created At</th>
                                     <th scope="col">Updated At</th>
                                     <th scope="col"> ... </th>
@@ -85,6 +86,7 @@
                                     <tr class="">
                                         <td scope="row"> {{ $grade->name }} </td>
                                         <td>{{ $grade->abrv }}</td>
+                                        <td> {{ $grade->students->count() }} </td>
 
                                         <td> {{ $grade->created_at->format('M jS. Y h:i a') }} </td>
 

@@ -13,5 +13,8 @@ class Grade extends Model
         'abrv'
     ];
 
-    
+    public function students()
+    {
+        return $this->hasMany(StudentGrade::class, 'grade_id');
+    }
 }
