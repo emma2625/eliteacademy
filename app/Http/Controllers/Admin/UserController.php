@@ -16,4 +16,11 @@ class UserController extends Controller
 
         return view('admin.users.index', compact('users'));
     }
+
+
+    public function show($id)
+    {
+        $user = User::where('id', '=', $id)->firstOrFail();
+        return view('admin.users.show', compact('user'));
+    }
 }

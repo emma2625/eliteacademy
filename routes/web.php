@@ -33,3 +33,4 @@ Route::middleware(['auth'])->patch('/profile', [ProfileController::class, 'updat
 
 // Admin User Routes
 Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
+Route::get('admin/user/{id}', [UserController::class, 'show'])->name('admin.users.show');

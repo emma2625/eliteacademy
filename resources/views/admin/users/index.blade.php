@@ -20,7 +20,11 @@
                                 <td scope="row"> {{ $user->name }} </td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    
+                                    <div class="d-flex">
+                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-primary btn-sm">
+                                            View
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @empty
