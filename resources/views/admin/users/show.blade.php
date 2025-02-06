@@ -28,23 +28,33 @@
                     <div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                            <form class="modal-content">
+                            <form method="POST" action="{{ route('admin.users.assign', $user->id) }}"
+                                class="modal-content">
+                                @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalTitleId">
-                                       Assign to a class
+                                        Assign to a class
                                     </h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <label for="">Grades</label>
-                                    <select name="" id="" class="form-select"></select>
+                                    <select name="class" id="" class="form-select">
+                                        @forelse ($grades as $grade)
+                                            <option value="{{ $grade->id }}">
+                                                {{ $grade->abrv }}
+                                            </option>
+                                        @empty
+                                            <option disabled>No Grade Created Yet</option>
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                         Close
                                     </button>
-                                    <button type="button" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -105,6 +115,26 @@
 
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-6 mb-5">
+                <!-- Some borders are removed -->
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-bg-dark"> Grades </li>
+                    @forelse ($user->grades as $class)
+                        <li class="list-group-item">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th>{{ $class->grade->name }}</th>
+                                    <td>{{ $class->created_at->format('M, jS Y') }}</td>
+                                </tr>
+                            </table>
+                        </li>
+                    @empty
+                        <li class="list-group-item">Not Assigned to a Grade</li>
+                    @endforelse
+                </ul>
+
             </div>
         </div>
     </div>

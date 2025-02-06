@@ -19,6 +19,8 @@ Route::get('/admin/classes', [ClassController::class, 'create'])->name('admin.cl
 
 Route::get('/admin/classes/{id}/edit', [ClassController::class, 'edit'])->name('admin.class.edit');
 
+Route::get('/admin/classes/{id}/show', [ClassController::class, 'show'])->name('admin.class.show');
+
 Route::patch('/admin/classes/{id}/update', [ClassController::class, 'update'])->name('admin.class.update');
 
 Route::delete('/admin/classes/{id}/delete', [ClassController::class, 'destroy'])->name('admin.class.destroy');
@@ -32,5 +34,9 @@ Route::middleware(['auth'])->patch('/profile', [ProfileController::class, 'updat
 
 
 // Admin User Routes
-Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
-Route::get('admin/user/{id}', [UserController::class, 'show'])->name('admin.users.show');
+Route::middleware(['auth', 'is.admin'])->group(function() {
+    Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('admin/user/{id}', [UserController::class, 'show'])->name('admin.users.show');
+    Route::post('admin/user/{id}', [UserController::class, 'assign'])->name('admin.users.assign');
+
+});

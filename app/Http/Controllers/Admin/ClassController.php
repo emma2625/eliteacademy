@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Grade;
+use App\Models\StudentGrade;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -79,5 +80,14 @@ class ClassController extends Controller
 
         return back();
 
+    }
+
+
+
+    public function show($id)
+    {
+        $grade = Grade::findOrFail($id);
+        $students = StudentGrade::where('grade_id', $grade->id)->latest()->paginate(10);
+        return view('admin.classes.show', compact('grade', 'students'));
     }
 }

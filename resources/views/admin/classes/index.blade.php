@@ -92,10 +92,18 @@
 
                                         <td> {{ $grade->updated_at->diffForHumans() }} </td>
                                         <td class="d-flex align-items-center gap-2">
-                                            <a href="{{ route('admin.class.edit', $grade->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{{ route('admin.class.show', $grade->id) }}" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+
+                                            <a href="{{ route('admin.class.edit', $grade->id) }}" class="btn btn-primary btn-sm">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </a>
                                             <form action="{{ route('admin.class.destroy', $grade->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this class: {{ $grade->name }}?')">
                                                 @csrf @method('DELETE')
-                                                <button class="btn btn-danger btn-sm">Delete</button>
+                                                <button class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-trash-alt"></i>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
