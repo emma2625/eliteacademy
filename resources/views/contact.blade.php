@@ -9,30 +9,32 @@
                         <div class="card-body">
                             <h4 class="text-center card-title mb-4">Get In Touch With us</h4>
 
-                            <form action="" class="row">
+                            <form action="{{route('contact.send')}}" method="POST" class="row">
+                                @csrf
+
                                 <div class="col-md-6 mb-3">
                                     <label for="">Full Name</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="name" class="form-control">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="">Email</label>
-                                    <input type="email" class="form-control">
+                                    <input type="email" name="email" class="form-control">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="">Subject</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="subject" class="form-control">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="">Branch</label>
-                                    <select name="" class="form-select" id="">
-                                        <option value="">Kubwa Abuja Branch</option>
-                                        <option value="">Lekki Lagos Branch</option>
-                                        <option value="">Bristol UK Branch</option>
+                                    <select name="branch" class="form-select" id="">
+                                        <option value="kubwa">Kubwa Abuja Branch</option>
+                                        <option value="lekki">Lekki Lagos Branch</option>
+                                        <option value="bristol">Bristol UK Branch</option>
                                     </select>
                                 </div>
                                 <div class="col-12 mb-4">
                                     <label for="">Message</label>
-                                    <textarea name="" class="form-control" rows="10"></textarea>
+                                    <textarea name="message" class="form-control" rows="10"></textarea>
                                 </div>
 
                                 <div class="text-center">
